@@ -25,7 +25,7 @@ import javax.crypto.Cipher;
  * PKCS1 私钥生成：openssl genrsa -out rsa_private_key.pem 1024
  * PKCS1 转 PKCS8私钥：openssl pkcs8 -topk8 -inform PEM -in rsa_private_key.pem -outform pem -nocrypt -out pkcs8_private_key.pem
  */
-public class RSA {
+public class RSAUtil {
 	/** 指定key的大小 */
 	private static final int KEYSIZE = 1024;
 	private static final String CHAR_ENCODING = "UTF-8";

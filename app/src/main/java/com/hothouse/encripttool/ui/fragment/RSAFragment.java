@@ -1,7 +1,5 @@
 package com.hothouse.encripttool.ui.fragment;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -15,8 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hothouse.encripttool.R;
-import com.hothouse.encripttool.utils.AESFinal;
-import com.hothouse.encripttool.utils.RSA;
+import com.hothouse.encripttool.utils.RSAUtil;
 
 /**
  * Created by Administrator on 2017/12/13.
@@ -67,7 +64,7 @@ public class RSAFragment extends Fragment implements View.OnClickListener{
         switch (view.getId()){
             case R.id.create_btn:
                 try {
-                    RSA.RSAKeyPair rsaKeyPair = RSA.generateKeyPair();
+                    RSAUtil.RSAKeyPair rsaKeyPair = RSAUtil.generateKeyPair();
                     pubKeyEt.setText(rsaKeyPair.publicKey);
                     priKeyEt.setText(rsaKeyPair.privateKey);
                     Log.i(TAG,"PublicKey:"+rsaKeyPair.publicKey);
@@ -83,9 +80,9 @@ public class RSAFragment extends Fragment implements View.OnClickListener{
                 String priKeyStr = priKeyEt.getText().toString();
                 String content = contentEt.getText().toString();
                 try {
-                   String encriptedStr =  RSA.encrypt(content,pubKeyStr);
+                   String encriptedStr =  RSAUtil.encrypt(content,pubKeyStr);
                    encriptedTv.setText(encriptedStr);
-                   String decriptedStr = RSA.decrypt(encriptedStr,priKeyStr);
+                   String decriptedStr = RSAUtil.decrypt(encriptedStr,priKeyStr);
                    decriptedTv.setText(decriptedStr);
                 } catch (Exception e) {
                     e.printStackTrace();

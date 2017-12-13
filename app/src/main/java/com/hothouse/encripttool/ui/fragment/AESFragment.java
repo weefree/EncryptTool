@@ -14,7 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hothouse.encripttool.R;
-import com.hothouse.encripttool.utils.AESFinal;
+import com.hothouse.encripttool.utils.AESUtil;
 
 /**
  * Created by Administrator on 2017/12/13.
@@ -77,9 +77,9 @@ public class AESFragment extends Fragment implements View.OnClickListener{
                 String content = contentEt.getText().toString();
                 String aesMode = modeBtn.getText().toString();
                 try {
-                   String encriptedStr =  AESFinal.encript(aesMode,ivStr,content,keyStr);
+                   String encriptedStr =  AESUtil.encript(aesMode,ivStr,content,keyStr);
                    encriptedTv.setText(encriptedStr);
-                   String decriptedStr = AESFinal.decriptBase64Data(aesMode,ivStr,encriptedStr,keyStr);
+                   String decriptedStr = AESUtil.decriptBase64Data(aesMode,ivStr,encriptedStr,keyStr);
                    decriptedTv.setText(decriptedStr);
                 } catch (Exception e) {
                     e.printStackTrace();
